@@ -1,0 +1,6 @@
+Tools:
+    - MenuName: Tool1
+      MenuClass: io.github.hochikong.ktmeta.testOnly.submenus.Tool1
+    
+    - MenuName: Tool2
+      MenuClass: io.github.hochikong.ktmeta.testOnly.submenus.Tool2
