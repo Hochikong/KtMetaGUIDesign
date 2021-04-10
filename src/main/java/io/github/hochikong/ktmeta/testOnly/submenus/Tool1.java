@@ -33,6 +33,7 @@ public class Tool1 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tool1 Frame");
 
         jButton1.setText("jButton1");
 
