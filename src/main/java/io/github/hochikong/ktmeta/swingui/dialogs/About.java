@@ -76,7 +76,7 @@ public class About extends javax.swing.JDialog {
             }
         });
         InfoScrollPane.setViewportView(TextPaneInfo);
-        TextPaneInfo.setText(ButtomText);
+        TextPaneInfo.setText(BottomText);
 
         javax.swing.GroupLayout LabelInfoLayout = new javax.swing.GroupLayout(LabelInfo);
         LabelInfo.setLayout(LabelInfoLayout);
@@ -143,7 +143,7 @@ public class About extends javax.swing.JDialog {
     //<My-Custom>  
     OperatingSystemMXBean system = ManagementFactory.getOperatingSystemMXBean();
     RuntimeMXBean runtime = ManagementFactory.getRuntimeMXBean();
-    protected String ButtomText = "OS: " + system.getName()
+    protected String BottomText = "OS: " + system.getName()
             + " ; Arch: " + system.getArch()
             + " ; Cores: " + system.getAvailableProcessors()
             + "\n"
@@ -151,8 +151,9 @@ public class About extends javax.swing.JDialog {
             + " ; " + runtime.getVmVendor()
             + " ; \n" + runtime.getSpecVersion() + runtime.getVmVersion();
     
-    protected void diaDispose(){
-        this.dispose();
+    protected void updateButtomText(String text){
+        this.BottomText = text;
+        this.TextPaneInfo.setText(this.BottomText);
     }
     //</My-Custom>
 
