@@ -1,0 +1,10 @@
+2021-05-04 16:45:55: -- 分析开始 User Command
+2021-05-04 16:45:55: 左侧: State file does not exist: C:/Users/ckhoi/Documents/NetBeansProjects/KtMetaGUIDesign/src/main/java/_gsdata_/_file_state_v4._gs
+2021-05-04 16:45:55: 右侧: State file does not exist: C:/Users/ckhoi/IdeaProjects/ktmeta/ktmeta-app/src/main/java/_gsdata_/_file_state_v4._gs
+2021-05-04 16:45:55: /io/github/hochikong/ktmeta/swingui/dialogs/About.java: 警告：较旧的文件将替换较新的文件
+2021-05-04 16:45:55: /io/github/hochikong/ktmeta/swingui/dialogs/codegen/impAbout.java: 警告：较旧的文件将替换较新的文件
+2021-05-04 16:45:55: 同步需要磁盘 file:///C: 上的空间应为 0.00，目前为 14.99 GB
+2021-05-04 16:45:55: 同步需要磁盘 file:///C: 上的空间应为 13.31 KB，目前为 14.99 GB
+2021-05-04 16:45:55: 变更：61， 冲突：0， 复制时间：0， 复制状态：11， 错误： 0, All: 74
+2021-05-04 16:45:55: Left to Right: Copy File: 61 
+2021-05-04 16:45:55: -- 分析已结束。历时 00:00:00, 速度： Many 文件/秒

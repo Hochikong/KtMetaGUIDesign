@@ -1,0 +1,6 @@
+2021-05-04 18:17:46: == 同步开始由 User Command
+2021-05-04 18:17:46: 覆盖复制 'C:/Users/ckhoi/Documents/NetBeansProjects/KtMetaGUIDesign/src/main/java/io/github/hochikong/ktmeta/swingui/dialogs/About.java' -> 'C:/Users/ckhoi/IdeaProjects/ktmeta/ktmeta-app/src/main/java/io/github/hochikong/ktmeta/swingui/dialogs/About.java' (7,008)
+2021-05-04 18:17:46: 新建复制 'C:/Users/ckhoi/Documents/NetBeansProjects/KtMetaGUIDesign/src/main/java/io/github/hochikong/ktmeta/swingui/dialogs/AddCustomTags.java' -> 'C:/Users/ckhoi/IdeaProjects/ktmeta/ktmeta-app/src/main/java/io/github/hochikong/ktmeta/swingui/dialogs/AddCustomTags.java' (14,792)
+2021-05-04 18:17:46: 覆盖复制 'C:/Users/ckhoi/Documents/NetBeansProjects/KtMetaGUIDesign/src/main/java/io/github/hochikong/ktmeta/swingui/dialogs/codegen/impAbout.java' -> 'C:/Users/ckhoi/IdeaProjects/ktmeta/ktmeta-app/src/main/java/io/github/hochikong/ktmeta/swingui/dialogs/codegen/impAbout.java' (7,246)
+2021-05-04 18:17:46: 覆盖复制 'C:/Users/ckhoi/Documents/NetBeansProjects/KtMetaGUIDesign/src/main/java/io/github/hochikong/ktmeta/swingui/KtmetaMainFrameDesign.java' -> 'C:/Users/ckhoi/IdeaProjects/ktmeta/ktmeta-app/src/main/java/io/github/hochikong/ktmeta/swingui/KtmetaMainFrameDesign.java' (52,310)
+2021-05-04 18:17:46: == 同步完成. 历时: 00:00:00, 速度: 0.00/s, 完成: 72, 错误: 0

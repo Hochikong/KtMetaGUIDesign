@@ -1,0 +1,5 @@
+2021-05-04 17:02:04: == 同步开始由 User Command
+2021-05-04 17:02:04: 覆盖复制 'C:/Users/ckhoi/Documents/NetBeansProjects/KtMetaGUIDesign/src/main/java/io/github/hochikong/ktmeta/swingui/dialogs/AddCustomTags.form' -> 'C:/Users/ckhoi/IdeaProjects/ktmeta/ktmeta-app/src/main/java/io/github/hochikong/ktmeta/swingui/dialogs/AddCustomTags.form' (13,986)
+2021-05-04 17:02:04: 覆盖复制 'C:/Users/ckhoi/Documents/NetBeansProjects/KtMetaGUIDesign/src/main/java/io/github/hochikong/ktmeta/swingui/dialogs/AddCustomTags.java' -> 'C:/Users/ckhoi/IdeaProjects/ktmeta/ktmeta-app/src/main/java/io/github/hochikong/ktmeta/swingui/dialogs/AddCustomTags.java' (12,779)
+2021-05-04 17:02:04: 覆盖复制 'C:/Users/ckhoi/Documents/NetBeansProjects/KtMetaGUIDesign/src/main/java/io/github/hochikong/ktmeta/swingui/dialogs/codegen/impAddCustomTags.java' -> 'C:/Users/ckhoi/IdeaProjects/ktmeta/ktmeta-app/src/main/java/io/github/hochikong/ktmeta/swingui/dialogs/codegen/impAddCustomTags.java' (13,492)
+2021-05-04 17:02:04: == 同步完成. 历时: 00:00:00, 速度: 0.00/s, 完成: 3, 错误: 0
