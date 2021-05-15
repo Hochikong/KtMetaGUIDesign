@@ -29,7 +29,6 @@ public class TextPreviewDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         HideHead();
-        this.setLocationRelativeTo(null);
     }
     
     public TextPreviewDialog(java.awt.Frame parent, boolean modal, Image icon) {
@@ -95,8 +94,10 @@ public class TextPreviewDialog extends javax.swing.JDialog {
         });
         jScrollPane2.setViewportView(TextAreaEditor);
 
-        LabelEditorPreview.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelEditorPreview.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LabelEditorPreview.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jScrollPane1.setViewportView(LabelEditorPreview);
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
 
         BTNClearEditor.setText(bundle.getString("CLEAR EDITOR")); // NOI18N
         BTNClearEditor.setFocusable(false);
@@ -181,6 +182,8 @@ public class TextPreviewDialog extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 TextPreviewDialog dialog = new TextPreviewDialog(new javax.swing.JFrame(), true);
+                dialog.setLocationRelativeTo(null);
+                
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

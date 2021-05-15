@@ -31,7 +31,6 @@ public class AddCustomTags extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         HideHead();
-        this.setLocationRelativeTo(null);
     }
 
     public AddCustomTags(java.awt.Frame parent, boolean modal, List<String> TagsData) {
@@ -39,7 +38,6 @@ public class AddCustomTags extends javax.swing.JDialog {
         this.tagsData = TagsData;
         initComponents();
         HideHead();
-        this.setLocationRelativeTo(null);
     }
 
     public AddCustomTags(java.awt.Frame parent, boolean modal, List<String> TagsData, Image icon) {
@@ -249,6 +247,8 @@ public class AddCustomTags extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 AddCustomTags dialog = new AddCustomTags(new javax.swing.JFrame(), true);
+                dialog.setLocationRelativeTo(null);
+                
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -263,7 +263,8 @@ public class AddCustomTags extends javax.swing.JDialog {
     //<My-Custom>
     protected List<String> tagsData;
     protected CustomTagsTableModel myModel = new CustomTagsTableModel();
-
+    
+    // set dialog undecorated first
     protected void HideHead() {
         // Like IDEA style
         this.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);

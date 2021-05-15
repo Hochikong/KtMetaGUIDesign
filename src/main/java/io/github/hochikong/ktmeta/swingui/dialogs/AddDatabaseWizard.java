@@ -30,8 +30,6 @@ public class AddDatabaseWizard extends javax.swing.JDialog {
         this.supportedDatabaseList = new String[]{"SQLite", "PostgreSQL"};
         initComponents();
         HideHead();
-        // centre
-        this.setLocationRelativeTo(null);
     }
 
     public AddDatabaseWizard(java.awt.Frame parent, boolean modal, String[] SupportedDBList) {
@@ -39,8 +37,6 @@ public class AddDatabaseWizard extends javax.swing.JDialog {
         this.supportedDatabaseList = SupportedDBList;
         initComponents();
         HideHead();
-        // centre
-        this.setLocationRelativeTo(null);
     }
 
     public AddDatabaseWizard(java.awt.Frame parent, boolean modal, String[] SupportedDBList, Image icon) {
@@ -49,7 +45,6 @@ public class AddDatabaseWizard extends javax.swing.JDialog {
         initComponents();
         HideHead();
         this.setIconImage(icon);
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -293,6 +288,8 @@ public class AddDatabaseWizard extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 AddDatabaseWizard dialog = new AddDatabaseWizard(new javax.swing.JFrame(), true);
+                dialog.setLocationRelativeTo(null);
+                
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
