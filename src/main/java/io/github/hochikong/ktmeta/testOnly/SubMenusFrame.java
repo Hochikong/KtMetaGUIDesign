@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
 import io.github.hochikong.ktmeta.testOnly.submenus.SubMenu;
+import io.github.hochikong.ktmeta.testOnly.submenus.Tool1;
 import io.github.hochikong.ktmeta.testOnly.submenus.ToolsConfig;
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -27,14 +28,14 @@ import javax.swing.RootPaneContainer;
  *
  * @author ckhoi
  */
-public class BasicForm extends javax.swing.JFrame {
+public class SubMenusFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form BasicForm
      */
-    public BasicForm() {
+    public SubMenusFrame() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
         this.mapper = new ObjectMapper(new YAMLFactory());
         mapper.setPropertyNamingStrategy(PropertyNamingStrategy.UPPER_CAMEL_CASE);
@@ -44,7 +45,7 @@ public class BasicForm extends javax.swing.JFrame {
         try {
             menusCfg = mapper.readValue(new File(f.getAbsolutePath()), ToolsConfig.class);
         } catch (IOException ex) {
-            Logger.getLogger(BasicForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SubMenusFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         if (menusCfg != null) {
@@ -55,24 +56,28 @@ public class BasicForm extends javax.swing.JFrame {
                 menuList.add(m);
 
                 objectList.put(menu.getMenuName(), menu.getMenuClass());
-                
+
                 m.addActionListener((ActionEvent e) -> {
                     for (JMenuItem mx : menuList) {
                         if (e.getSource() == mx) {
                             try {
                                 try {
                                     newObject = (JFrame) Class.forName(menu.getMenuClass()).newInstance();
+                                    if (newObject instanceof Tool1) {
+                                        Tool1 x = (Tool1) newObject;
+                                        x.loadData(this.sharedData);
+                                    }
                                     newObject.setVisible(true);
                                 } catch (InstantiationException | IllegalAccessException ex) {
-                                    Logger.getLogger(BasicForm.class.getName()).log(Level.SEVERE, null, ex);
+                                    Logger.getLogger(SubMenusFrame.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                             } catch (ClassNotFoundException ex) {
-                                Logger.getLogger(BasicForm.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(SubMenusFrame.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         }
                     }
                 });
-                
+
                 MenuTools.add(m);
             }
         }
@@ -88,6 +93,7 @@ public class BasicForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         MenuBarMain = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -96,6 +102,13 @@ public class BasicForm extends javax.swing.JFrame {
         MenuTools = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("Check shared data");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         MenuFile.setText("File");
 
@@ -119,15 +132,25 @@ public class BasicForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jButton1)
+                .addContainerGap(435, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 352, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jButton1)
+                .addContainerGap(273, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println(sharedData[0]);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,10 +162,13 @@ public class BasicForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BasicForm().setVisible(true);
+                new SubMenusFrame().setVisible(true);
             }
         });
     }
+    
+    // share data between main frame and sub frames
+    private String[] sharedData = {"nmsl"};
 
     protected ObjectMapper mapper;
     protected ToolsConfig menusCfg;
@@ -154,6 +180,7 @@ public class BasicForm extends javax.swing.JFrame {
     protected javax.swing.JMenu MenuEdit;
     protected javax.swing.JMenu MenuFile;
     protected javax.swing.JMenu MenuTools;
+    protected javax.swing.JButton jButton1;
     protected javax.swing.JMenuItem jMenuItem1;
     protected javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
