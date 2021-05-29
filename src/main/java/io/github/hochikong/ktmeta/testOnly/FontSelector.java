@@ -50,6 +50,7 @@ public class FontSelector extends JApplet
 
         fontSelectorPanel.add(new JLabel("Font family:"));
 
+        // get fonts
         GraphicsEnvironment gEnv =
             GraphicsEnvironment.getLocalGraphicsEnvironment();
         fonts = new JComboBox(gEnv.getAvailableFontFamilyNames());
@@ -98,7 +99,7 @@ public class FontSelector extends JApplet
     public void stateChanged(ChangeEvent e) {
         try {
             String size = sizes.getModel().getValue().toString();
-            sizeChoice = Integer.parseInt(size);
+            sizeChoice = (int) sizes.getValue();
             textTestPanel.setFont(new Font(fontChoice,styleChoice,sizeChoice));
         } catch (NumberFormatException nfe) {
         }
