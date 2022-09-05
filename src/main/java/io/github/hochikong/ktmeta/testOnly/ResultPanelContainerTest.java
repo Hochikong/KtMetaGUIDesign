@@ -15,14 +15,26 @@ package io.github.hochikong.ktmeta.testOnly;
 import com.formdev.flatlaf.intellijthemes.FlatSolarizedLightIJTheme;
 import io.github.hochikong.ktmeta.swingui.essentials.SimpleResultPanelContainer;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.table.TableModel;
 
 /**
  *
  * @author ckhoi
+ * A simple demo shows how to create closable tab
  */
 public class ResultPanelContainerTest extends javax.swing.JFrame {
 
@@ -186,11 +198,14 @@ public class ResultPanelContainerTest extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // -------------------------------------------------------------------------
+        // create tab with close btn add to TabbedPane
         SimpleResultPanelContainer sp = new SimpleResultPanelContainer();
-        TabbedPaneQueryResult.addTab("test", sp);
-        JPanel x = TestCloseBTNHelper.buildCustomTabHeadPanel("test", "204,225,152", "238,232,213");
+        TabbedPaneQueryResult.addTab("test"+Integer.toString(sIndex), sp);
+        JPanel x = buildCustomTabHeadPanel("test"+Integer.toString(sIndex), "204,225,152", "238,232,213");
+        sIndex += 1;
         TabbedPaneQueryResult.setTabComponentAt(TabbedPaneQueryResult.indexOfComponent(sp), x);
-        
+        // =========================================================================
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -207,6 +222,48 @@ public class ResultPanelContainerTest extends javax.swing.JFrame {
         });
     }
     
+    // -------------------------------------------------------------------------
+    // create tab with close btn
+    private JButton getCloseBtn(String uuid, String colorBackground, String colorEnter) {
+        MyJButton closeBTN = new MyJButton(uuid);
+        closeBTN.setIcon(new ImageIcon(TestCloseBTNHelper.class.getResource("/icons/ico/16pix/close.png")));
+        closeBTN.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        closeBTN.setBackground(convertString2RGBColor(colorBackground));
+        closeBTN.setFocusPainted(false);
+        closeBTN.setBorderPainted(false);
+        return closeBTN;
+    }
+
+    public Color convertString2RGBColor(String color) {
+        String[] tmp = color.split(",");
+        List<Integer> rgbColor = Arrays.stream(tmp).map(e -> Integer.parseInt(e)).collect(Collectors.toList());
+        return new Color(rgbColor.get(0), rgbColor.get(1), rgbColor.get(2));
+    }
+
+    public JPanel buildCustomTabHeadPanel(String title, String mouseInColor, String backgroundColor) {
+        JPanel panelTitle = new JPanel();
+        panelTitle.setOpaque(false);
+
+        JLabel labelTitle = new JLabel(title);
+        labelTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        panelTitle.add(labelTitle);
+
+        JButton btnClose = getCloseBtn(title, backgroundColor, mouseInColor);
+        this.uuids.add(title);
+        int index = uuids.indexOf(title);
+        btnClose.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeTab(title);
+            }
+        });
+        panelTitle.add(btnClose);
+        
+
+        return panelTitle;
+    }
+    // =========================================================================
+    
     private TableModel injectModel = new javax.swing.table.DefaultTableModel(
             new Object[][]{
                 {getRandomString(), getRandomString()},
@@ -216,12 +273,30 @@ public class ResultPanelContainerTest extends javax.swing.JFrame {
                 "Result : ", "Match on : "
             }
     );
+    
+    // -------------------------------------------------------------------------
+    // store tab info
+    private int sIndex = 0;
+    
+    private List<String> uuids = new ArrayList<>();
 
     private String getRandomString() {
         byte[] array = new byte[7]; // length is bounded by 7
         new Random().nextBytes(array);
         return new String(array, Charset.forName("UTF-8"));
     }
+    
+    private void removeTab(String title){
+        int tabCount = TabbedPaneQueryResult.getTabCount();
+        for (int i=0; i < tabCount; i++) {
+            String tabTitle = TabbedPaneQueryResult.getTitleAt(i);
+            if (tabTitle.equals(title)){
+                TabbedPaneQueryResult.remove(i);
+                break;
+            }
+        }
+    }
+    // =========================================================================
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
